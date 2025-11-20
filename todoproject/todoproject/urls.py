@@ -20,5 +20,7 @@ from greetings import views
 
 urlpatterns = [
     path('',views.greetings),
+    path('form',views.form),
+    path('formdata',views.form)
     
 ]
