@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Data</title>
+    <title></title>
 </head>
 <body>
-    <h1>Form Submitted Successfully</h1>
-
     <p>{{ message }}</p>
-    
-
-
-  
-
-</body>
+    <table>
+        <tr>
+            <td>id: </td>
+            <td>{{ customer.id }}</td>
+        </tr>
+        <tr>
+            <td>email: </td>
+            <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+            <td>password: </td>
+            <td>{{ customer.password }}</td>
+        </tr>
+    </table>
+    </body>
 </html>

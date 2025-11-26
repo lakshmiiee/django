@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import LoginForm
 from .models import Login
+from .forms import LoginModelForm
 
 # Create your views here.
-def greetings(request):
-    #return HttpResponse ("Hello World..")
-    return render(request,'index.html')
+# def greetings(request):
+#     #return HttpResponse ("Hello World..")
+#     return render(request,'index.html')
 
 # def form(request):
 #     if request.GET:
@@ -44,20 +45,20 @@ def greetings(request):
 #     return render(request, 'form.html', {'form': form})
 
 
-def form(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            log=Login()
-            log.email=form.cleaned_data['email']
-            log.password=form.cleaned_data['password']
-            log.save()
-            return render(request,'formdata.html',{
-                 'message':'Data saved to db'
-             })
-    else:
-        form = LoginForm()
-    return render(request,'form.html',{'form':form})
+# def form(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             log=Login()
+#             log.email=form.cleaned_data['email']
+#             log.password=form.cleaned_data['password']
+#             log.save()
+#             return render(request,'formdata.html',{
+#                  'message':'Data saved to db'
+#              })
+#     else:
+#         form = LoginForm()
+#     return render(request,'form.html',{'form':form})
 
 # def login(request):
 #     log1=Login()
@@ -66,6 +67,46 @@ def form(request):
 #     log1.save()
 #     return HttpResponse("DB login row created")
 
+# def model_form(request):
+#     if request.method == 'POST':
+#         form = LoginModelForm(request.POST)
+#         if form.is_valid():
+#             cust = form.save()
+#             print(cust)
+#             return render(request,'formdata.html',{
+#                 'message': 'Data saved to db',
+#                 'customer': cust
+#             })
+#     else:
+#         form = LoginModelForm()
+#     return render(request,'form.html',{'form':form})
+
+# def pages(request, title):
+#     return render(request,'pages.html',{'title':title})
+
+# def count(request, num):
+#     return render(request,'count.html',{'num':num})
+
+
+def greeting(request):
+    if request.method == 'POST':
+        form = LoginModelForm(request.POST)
+        if form.is_valid():
+            cust = form.save()
+            return render(request,'formdata.html',{
+                'message': 'Data saved to db',
+                'customer': cust
+            })
+    else:
+        form = LoginModelForm()
+    return render(request,'index.html',{'form':form})
+
+def aboutUs(request):
+    return render(request,'about-us.html')
+def pages(request, title):
+    return render(request,'pages.html',{'title':title})
+def count(request, num):
+    return render(request,'count.html',{'num':num})
 
 
 
