@@ -1,0 +1,54 @@
+{%extends 'layout/app-layout.html'%}
+{%block 'content' %}
+
+<style>
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        padding: 20px;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+
+</style>
+
+<h1>Retrieve Products</h1>
+
+<table border="1">
+
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+    </tr>
+
+        {%for products in product_list%}
+
+    <tr>
+    <td>{{ products.id }}</td>
+    <td>{{ products.name }} </td> 
+    <td>{{ products.price }}</td>
+
+    <td>
+        <a href="{% url 'updateproduct' products.id %}"  class="btn" value = 'edit'>Edit</a>
+    </td>
+    
+    <td>
+        <a href="{% url 'deleteproduct' products.id %}" class="btn" value = 'edit'>Delete</a>
+    </td>
+
+    </tr>
+
+    
+
+     {% endfor %}
+
+    </table> 
+
+{%endblock%}

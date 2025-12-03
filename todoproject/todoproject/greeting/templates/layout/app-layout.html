@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        nav {
+            background-color: rgb(215, 215, 215);
+            display: inline;
+            padding: 10px;
+            border-radius: 50px;
+        }
+        a {
+            color:brown;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        a:hover {
+            background-color: brown;
+            color: white;
+            transition: .6s;
+            border-radius: 50px;
+        }
+
+        p {
+            width: 500px;
+        }
+        nav {
+            gap: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'aboutus' %}">About Us</a>
+    </nav> -->
+
+    {% include 'partials/navbar.html' %}
+
+    {% block 'content' %}
+    {% endblock %}
+    
+</body>
+</html>
